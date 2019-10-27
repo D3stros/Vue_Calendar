@@ -178,6 +178,15 @@ export default {
       this.selectedOpen = false
       this.currentlyEditing = null
     },
+    async deleteEvent(ev) {
+      await db
+        .collection('calEvent')
+        .doc(ev)
+        .delete()
+
+      this.selectedOpen = false
+      this.getEvents()
+    },
     viewDay({ date }) {
       this.focus = date
       this.type = 'day'
